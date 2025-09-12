@@ -24,6 +24,12 @@ def original_signal(t, f):
 n = int(sampling_freq * duration)
 t_points = np.linspace(0, duration, cont*n, endpoint=False) # 1000 points in [0, duration]
 cont_signal = add_Gaussian_noise(original_signal(t_points, signal_freq), mean, std_dev)
+MSE = np.mean((cont_signal - original_signal(t_points, signal_freq))**2)
+print(f"Mean Squared Error (MSE) between original and noisy signal: {MSE:.4f}")
+RMSE = np.sqrt(MSE)
+print(f"Root Mean Squared Error (RMSE) between original and noisy signal: {RMSE:.4f}")
+PSNR = 10 * np.log10(np.max(original_signal(t_points, signal_freq))**2 / MSE)
+print(f"Peak Signal-to-Noise Ratio (PSNR) between original and noisy signal: {PSNR:.2f} dB")
 plt.plot(t_points, cont_signal, label='continuous signal')
 
 #t_sampled = np.linspace(0, duration, n, endpoint=False)
