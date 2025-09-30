@@ -22,3 +22,5 @@ qv = min_signal + q_sample * (max_signal - min_signal) / (2**num_bits - 1)
 plt.step(t_sampled,qv, where='post', label=f'Quantized Signal({num_bits} bits)', color='r', linestyle='--')
 
 plt.show()
+
+# the sampling frequency should be at least twice the signal frequency so the correct sampling frequency should be > 10 Hz
