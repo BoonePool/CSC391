@@ -1,1 +1,45 @@
 # CSC391
+
+1. The white image has a higher mean and standard deviation compared to the black image, indicating that it is brighter and has more variation in pixel intensities.
+ the standard deviation of the white image is higher because it contains more light and thus more variation in pixel values, while the black image is darker and has less variation.
+the white standard deviation is 170 times higher than the black standard deviation
+ the Signal to noise ratio tells the same story with the white SNR being 20% and the black image at .3%
+
+ 2. Inverse relationship: HFOV ∝ arctan(1/f). Increasing focal length → smaller HFOV → narrower view.
+
+Practical visual effect: Telephoto lenses “bring distant things closer” in the image (they magnify subject details and compress the apparent distance between foreground and background). Wide/ultra-wide lenses capture much more scene (larger HFOV), which is why they’re preferred for landscapes or architecture.
+
+
+Advantages of main: larger effective aperture/pixel throughput in many phones → higher SNR; good compromise of FOV and detail; excellent for landscapes & general use.
+
+Disadvantages of main: not as much reach for distant subjects; less subject compression for portraits.
+
+Best use case: landscapes, travel, general scenes — wide FOV, high SNR.
+
+Ultra-wide camera
+
+Advantages: very wide FOV; captures dramatic scenes, interiors, architecture.
+
+Disadvantages: often smaller sensor area per pixel and more distortion; can show higher noise if light is low.
+Best use case: architecture, interiors, creative wide shots.
+3. 
+
+1. Gaussian Filter
+Effect: Smooths the live video stream, reduces random noise, and slightly blurs edges. Motion looks softer and fine textures disappear.
+Kernel explanation: The kernel has a large positive value in the center and smaller positive values around it. This weighted averaging reduces pixel-to-pixel variation while preserving overall brightness.
+
+2. Sobel Filter (Horizontal)
+Effect: Highlights horizontal edges, meaning it detects intensity changes in the vertical direction. Vertical structures (like buildings or people standing) become bright, while horizontal textures are suppressed.
+Kernel explanation: Negative weights at the top and positive weights at the bottom measure intensity differences between rows, which emphasizes horizontal edges.
+
+3. Sobel Filter (Vertical)
+Effect: Highlights vertical edges, meaning it detects intensity changes from left to right. Vertical motion or boundaries appear strongly, while horizontal patterns are less visible.
+Kernel explanation: Negative weights on the left and positive weights on the right measure differences between columns, which emphasizes vertical edges.
+
+4. Sharpening Filter
+Effect: Makes edges and details in the live stream look crisper and more defined. Textures such as hair or fabric stand out more clearly. At the same time, noise may also become more visible.
+Kernel explanation: A strong positive weight at the center and negative weights around it subtract a blurred version of the image from the original, which enhances edge differences.
+
+5. Embossing Filter
+Effect: Creates a “relief” or 3D carved effect in the video. Objects appear as if lit from one side, with shadows and highlights giving the impression of depth.
+Kernel explanation: The asymmetric arrangement of negative values on one side and positive values on the other emphasizes differences along a diagonal, simulating shading from a light source.
