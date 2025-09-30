@@ -36,7 +36,18 @@ sharpen_filter = np.array([[0, -1, 0],
 edge_filter = np.array([[-1, -1, -1],
                         [-1, 8, -1],
                         [-1, -1, -1]], dtype=np.float32)
-
+soblel_filter_vert = np.array([[-1, 0, 1],
+                             [-2, 0, 2],
+                            [-1, 0, 1]], dtype=np.float32)
+soblel_filter_horz = np.array([[-1, -2, -1],
+                             [0, 0, 0],
+                            [1, 2, 1]], dtype=np.float32)
+gaussian_filter = (1/16) * np.array([[1, 2, 1],
+                                    [2, 4, 2],
+                                    [1, 2, 1]], dtype=np.float32)
+emboss_filter = np.array([[-2, -1, 0],
+                          [-1, 1, 1],
+                          [0, 1, 2]], dtype=np.float32)
 # Capture from webcam
 cap = cv2.VideoCapture(0)
 
@@ -77,6 +88,18 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('3') or mode == 3:
         result = cv2.filter2D(gray, -1,  box_filter)
         mode = 3
+    if cv2.waitKey(1) & 0xFF == ord('4') or mode == 4:
+        result = cv2.filter2D(gray, -1,  soblel_filter_vert)
+        mode = 4
+    if cv2.waitKey(1) & 0xFF == ord('5') or mode == 5:
+        result = cv2.filter2D(gray, -1,  soblel_filter_horz)
+        mode = 5
+    if cv2.waitKey(1) & 0xFF == ord('6') or mode == 6:
+        result = cv2.filter2D(gray, -1,  gaussian_filter)
+        mode = 6
+    if cv2.waitKey(1) & 0xFF == ord('7') or mode == 7:
+        result = cv2.filter2D(gray, -1,  emboss_filter)
+        mode = 7
 
     combined = np.hstack([gray, result])
     cv2.imshow("regular and choice ", combined)
