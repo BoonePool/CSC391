@@ -1,0 +1,4 @@
+1. in the test image I looked at (Exercise1_analysis) shows that the contrast strech does little to change the shape of the histogram but it will move the min and the max to 0 and 255. The histogram on the other side will try to use every intesity value equally.
+2. In the median filter the code adds every element in the filter into a list then takes the median of the list. This is a more robust filter aginst outliers since it just grabs the middle value. As for gradient magnitude it will dampen all edges lessening the gradient at every point. 
+
+3. the result(Exercise3_analysis) I got clearly shows the differences in the processes. The sobel edge detector gives clear lines but the lines can be too thick and still includes noise. The directional edge map only highlights pixels when at corners where x and y change about the same amount. The Canny edge detector thins the lines down and clearly shows all lines.
