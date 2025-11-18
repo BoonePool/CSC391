@@ -55,6 +55,6 @@ def calculate_gradient(image):
 
     # Clip to valid range and return uint8
     gradient_magnitude = np.clip(gradient_magnitude, 0, 255).astype(np.uint8)
-
-    return gradient_magnitude
+    gradient_angle = np.arctan2(grad_y, grad_x)
+    return gradient_magnitude,  gradient_angle
 

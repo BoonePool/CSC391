@@ -1,6 +1,5 @@
 import numpy as np
-from image_processing.calculate_histogram import calculate_histogram
-def equalize_histogram(image, histogram, dist):
+def equalize_histogram(image, dist):
     # Compute the cumulative distribution function (CDF)
     cdf = dist.cumsum()
     cdf_normalized = (cdf * 255).astype(np.uint8)  # Normalize to [0, 255]
